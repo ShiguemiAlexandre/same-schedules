@@ -1,16 +1,16 @@
 from datetime import datetime, timedelta
 class Time_equals:
     def __init__(self):
-        self.hora00 = 'Horario 00'
-        self.hora01 = 'Horario 01'
-        self.hora02 = 'Horario 02'
-        self.hora03 = 'Horario 03'
-        self.hora04 = 'Horario 04'
-        self.hora05 = 'Horario 05'
-        self.hora06 = 'Horario 06'
-        self.hora07 = 'Horario 07'
-        self.hora08 = 'Horario 08'
-        self.hora09 = 'Horario 09'
+        self.hora0 = 'Horario 00'
+        self.hora1 = 'Horario 01'
+        self.hora2 = 'Horario 02'
+        self.hora3 = 'Horario 03'
+        self.hora4 = 'Horario 04'
+        self.hora5 = 'Horario 05'
+        self.hora6 = 'Horario 06'
+        self.hora7 = 'Horario 07'
+        self.hora8 = 'Horario 08'
+        self.hora9 = 'Horario 09'
         self.hora10 = 'Horario 10'
         self.hora11 = 'Horario 11'
         self.hora12 = 'Horario 12'
@@ -28,16 +28,15 @@ class Time_equals:
     
 
     def time_equal(self):
-        # now = datetime.now()
         minutes_now = self.catch_minutes()
         hours_now = self.catch_hours()
         diff_minutes = self.diff_5minutes()
         if minutes_now == hours_now:
-            print(getattr(self, 'hora' + str(hours_now)))
+            return (getattr(self, 'hora' + str(hours_now)))
         elif minutes_now <= diff_minutes and minutes_now >= hours_now:    
-            print('Diferença de 5 minutos')
+            return 'Dif 5minutes'
         else:
-            print('Fora de horario')
+            return 'Fora de horario'
 
     def catch_minutes(self):
         time_now = datetime.now()
@@ -53,9 +52,3 @@ class Time_equals:
         now = datetime.now()
         five_hours_diff = now + timedelta(hours=5)
         return five_hours_diff.hour
-
-time = Time_equals()
-date = datetime.now()
-print(time.time_equal())
-
-# Hora será 5 horas a mais e será comparada com os minutos
