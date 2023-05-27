@@ -32,26 +32,27 @@ class Time_equals:
         minutes_now = self.catch_minutes()
         hours_now = self.catch_hours()
         diff_minutes = self.diff_5minutes()
-        print(diff_minutes)
-        # if minutes_now == hours_now:
-        #     print(getattr(self, 'hora' + str(hours_now)))
-        # elif minutes_now < diff_minutes:    
-        #     print('Diferença de 5 minutos')
+        if minutes_now == hours_now:
+            print(getattr(self, 'hora' + str(hours_now)))
+        elif minutes_now <= diff_minutes and minutes_now >= hours_now:    
+            print('Diferença de 5 minutos')
+        else:
+            print('Fora de horario')
 
     def catch_minutes(self):
         time_now = datetime.now()
         minutes_now = time_now.strftime("%M")
-        return minutes_now
+        return int(minutes_now)
         
     def catch_hours(self):
         time_now = datetime.now()
         hours_now = time_now.strftime("%H")
-        return hours_now
+        return int(hours_now)
 
     def diff_5minutes(self):
         now = datetime.now()
-        five_hours_diff = now.strftime("%H") + timedelta(hours=5)
-        return five_hours_diff
+        five_hours_diff = now + timedelta(hours=5)
+        return five_hours_diff.hour
 
 time = Time_equals()
 date = datetime.now()
