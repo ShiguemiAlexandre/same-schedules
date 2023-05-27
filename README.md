@@ -54,3 +54,5 @@ resultado = time.time_equal()
 # Imprime o resultado
 print(resultado)
 ```
+Neste exemplo, a mensagem correspondente à hora atual será impressa no console.
+
