@@ -25,37 +25,36 @@ class Time_equals:
         self.hora21 = 'Horario 21'
         self.hora22 = 'Horario 22'
         self.hora23 = 'Horario 23'
-        self.future_5hours = 0
-        self.past_5hours = 0
-        self.user_time_limit = 0
-        self.minutes_now = 0
-        self.hours_now = 0
-
-    def time_diff(self):
-        self.future_5hours = time_now + timedelta(hours=5)
-        self.past_5hours = self.future_5hours - timedelta(hours=5)
-        self.user_time_limit = int(self.future_5hours.strftime("%H"))
-
-
-    def minutes_catch(self):
-        self.minutes_now = int(time_now.strftime("%M"))
-        return self.minutes_now
-
-
-    def hours_catch(self):
-        self.hours_now = int(time_now.strftime("%H"))
-        return self.hours_now
     
 
-    def equals_minutes_and_hours(self, time_diff, minutes_catch, hours_catch):
-        if self.hours_now == self.minutes_now:
-            print(getattr(self, "hora" + str(self.hours_now)))
-        elif self.minutes_now <= self.user_time_limit and self.hours_now == self.past_5hours:
-            print(getattr(self, "hora" + str(self.hours_now)))
-        else:
-            print('Nenhum horario compativel')
+    def time_equal(self):
+        # now = datetime.now()
+        minutes_now = self.catch_minutes()
+        hours_now = self.catch_hours()
+        diff_minutes = self.diff_5minutes()
+        print(diff_minutes)
+        # if minutes_now == hours_now:
+        #     print(getattr(self, 'hora' + str(hours_now)))
+        # elif minutes_now < diff_minutes:    
+        #     print('Diferença de 5 minutos')
 
+    def catch_minutes(self):
+        time_now = datetime.now()
+        minutes_now = time_now.strftime("%M")
+        return minutes_now
+        
+    def catch_hours(self):
+        time_now = datetime.now()
+        hours_now = time_now.strftime("%H")
+        return hours_now
 
-time_now = datetime.now()
+    def diff_5minutes(self):
+        now = datetime.now()
+        five_hours_diff = now.strftime("%H") + timedelta(hours=5)
+        return five_hours_diff
+
 time = Time_equals()
-time.time()
+date = datetime.now()
+print(time.time_equal())
+
+# Hora será 5 horas a mais e será comparada com os minutos
